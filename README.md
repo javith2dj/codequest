@@ -36,7 +36,7 @@ CodeQuest is a VSCode extension designed to assist developers during upgrade ana
 
 Simply use the commands listed above to harness the features of CodeQuest. 
 
-For more in-depth usage instructions, contact javithabbas.ghousedawoodbatcha@cgi.com.
+For more in-depth usage instructions, contact javith2dj@gmail.com.
 
 ## Configuration
 
