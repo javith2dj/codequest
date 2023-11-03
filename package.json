@@ -1,0 +1,69 @@
+{
+  "name": "codequest",
+  "displayName": "CodeQuest",
+  "description": "Dive deep into your Microsoft Dynamics NAV objects to identify and analyze references to specific ticket IDs",
+  "version": "1.1.0",
+  "publisher": "Javith Abbas",
+  "icon": "assets/codequest.png",
+  "engines": {
+    "vscode": "^1.84.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:extension.findTickets"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "CodeQuest",
+      "properties": {
+        "allObjects.encoding": {
+          "type": "string",
+          "default": "latin1",
+          "description": "File encoding for reading tickets"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "codequest.findTickets",
+        "title": "CodeQuest:Find Ticket IDs in NAV Objects"
+      },
+      {
+        "command": "codequest.getTicketObjectList",
+        "title": "CodeQuest:Get the list of tickets by objects"
+      },
+      {
+        "command": "codequest.getTicketCountbyObjects",
+        "title": "CodeQuest:Get the tickets count by objects"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.3",
+    "@types/node": "^18.18.8",
+    "@types/vscode": "^1.84.0",
+    "@typescript-eslint/eslint-plugin": "^6.9.0",
+    "@typescript-eslint/parser": "^6.9.0",
+    "@vscode/test-electron": "^2.3.6",
+    "eslint": "^8.52.0",
+    "glob": "^10.3.10",
+    "mocha": "^10.2.0",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "csv-parser": "^3.0.0",
+    "csv-writer": "^1.6.0"
+  }
+}
