@@ -2,7 +2,7 @@
   "name": "codequest",
   "displayName": "CodeQuest",
   "description": "Dive deep into your Microsoft Dynamics NAV objects to identify and analyze references to specific ticket IDs",
-  "version": "1.1.0",
+  "version": "1.1.5",
   "publisher": "Javith Abbas",
   "icon": "assets/codequest.png",
   "engines": {
@@ -29,15 +29,15 @@
     "commands": [
       {
         "command": "codequest.findTickets",
-        "title": "CodeQuest:Find Ticket IDs in NAV Objects"
+        "title": "CodeQuest: Find Ticket IDs in NAV Objects"
       },
       {
         "command": "codequest.getTicketObjectList",
-        "title": "CodeQuest:Get the list of tickets by objects"
+        "title": "CodeQuest: Get the list of tickets by objects"
       },
       {
         "command": "codequest.getTicketCountbyObjects",
-        "title": "CodeQuest:Get the tickets count by objects"
+        "title": "CodeQuest: Get the tickets count by objects"
       }
     ]
   },
@@ -55,7 +55,6 @@
     "@types/vscode": "^1.84.0",
     "@typescript-eslint/eslint-plugin": "^6.9.0",
     "@typescript-eslint/parser": "^6.9.0",
-    "@vscode/test-electron": "^2.3.6",
     "eslint": "^8.52.0",
     "glob": "^10.3.10",
     "mocha": "^10.2.0",

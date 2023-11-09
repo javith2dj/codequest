@@ -22,7 +22,7 @@ function processNavObjects(navObjectsFile: string, ticketIds: string[], outputFi
     const ticketIdPatterns: Record<string, RegExp> = {};
 
     ticketIds.forEach(ticketId => {
-        ticketIdPatterns[ticketId] = new RegExp(ticketId);
+        ticketIdPatterns[ticketId] = new RegExp('\\'+ticketId+'\\b');
     });
 
     // Initialize variables
