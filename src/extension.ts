@@ -170,6 +170,54 @@ export function activate(context: vscode.ExtensionContext) {
         }
     });
 
+    let letanalyzedeltafilesDisposable = vscode.commands.registerCommand('codequest.analyzedeltafiles', async () => {
+        try {
+            const filepath = await vscode.window.showInputBox({ prompt: 'Enter folder path to the DELTA files:' });
+            if (!filepath) return;
+
+            const output_file = await vscode.window.showInputBox({ prompt: 'Enter path to the output CSV file:' });
+            if (!output_file) return;
+
+
+            // Path to compiled JS script
+            const scriptPath = `${context.extensionPath}/out/analyzedeltafiles.js`;
+
+            // Display progress dialog
+            vscode.window.withProgress({
+                location: vscode.ProgressLocation.Notification,
+                title: "Searching the All Objects file:",
+                cancellable: true
+            }, (progress, token) => {
+                return new Promise<void>((resolve, reject) => {
+                    // Check for cancelation
+                    token.onCancellationRequested(() => {
+                        console.log("User canceled the operation");
+                        reject(new Error("Canceled by user"));
+                    });
+
+                    setTimeout(() => progress.report({ message: "⏳ Oops this is taking some time..." }), 10000);
+                    setTimeout(() => progress.report({ message: "⏰ Alright.Set an alarm and come back later..." }), 30000);
+
+                    exec(`node "${scriptPath}" "${filepath}" "${output_file}"`, (error, stdout, stderr) => {
+                        if (error) {
+                            vscode.window.showErrorMessage(`Error executing script: ${error.message}`);
+                            reject(error);
+                            return;
+                        }
+                        vscode.window.showInformationMessage(stdout);
+                        resolve();
+                    });
+                });
+            });
+        } catch (error) {
+            if (error && typeof error === 'object' && 'message' in error) {
+                vscode.window.showErrorMessage(`An error occurred: ${error.message}`);
+            } else {
+                vscode.window.showErrorMessage(`An error occurred: ${error}`);
+            }
+        }
+    });
+
     context.subscriptions.push(findTicketsDisposable,findTicketsByObjectDisposable,findTicketCountByObjectDisposable);
 }
 
