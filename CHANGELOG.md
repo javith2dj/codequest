@@ -2,6 +2,9 @@
 
 All notable changes to the "CodeQuest" extension will be documented in this file.
 
+## [1.2.0] - 2023-11-14
+### Added
+- New command 'codequest.analyzedeltafiles' to parse the delta files from Compare-NAVApplicationObject
 
 ## [1.1.5] - 2023-11-10
 ### Fixed
